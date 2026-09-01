@@ -10,7 +10,7 @@ export default function Header(){
                 <div className="flex flex-row items-center gap-4 px-10 py-3">
 
                     <div>
-                        <i class="bi bi-bell text-2xl"></i>
+                        <i className="bi bi-bell text-2xl"></i>
                     </div>
 
                     <div>
@@ -18,7 +18,7 @@ export default function Header(){
                     </div>
 
                     <div className="flex items-center gap-2">
-                        <i class="bi bi-cc-circle-fill text-2xl"></i>
+                        <i className="bi bi-cc-circle-fill text-2xl"></i>
                         <p className="font-sans text-base">Carlos Carrilo</p>
                     </div>
 

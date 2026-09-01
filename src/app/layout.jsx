@@ -27,12 +27,17 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col">
 
+        <div className="flex min-h-screen">
         <Aside />
+
+        <div className="flex-1 flex flex-col">
         <Header />
 
         <main>
         {children}
         </main>
+        </div>
+        </div>
         </body>
     </html>
   );

@@ -3,6 +3,7 @@ import "./globals.css";
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import Header from "./components/header";
 import Aside from "./components/aside";
+import Welcome from "./components/welcome";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +33,8 @@ export default function RootLayout({ children }) {
 
         <div className="flex-1 flex flex-col">
         <Header />
+
+        <Welcome />
 
         <main>
         {children}

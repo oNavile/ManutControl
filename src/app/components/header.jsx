@@ -1,3 +1,5 @@
+import dados from "../../manutcontrol_dados.json"
+
 export default function Header(){
     return(
         <>
@@ -18,8 +20,10 @@ export default function Header(){
                     </div>
 
                     <div className="flex items-center gap-2">
-                        <i className="bi bi-cc-circle-fill text-2xl"></i>
-                        <p className="font-sans text-base">Carlos Carrilo</p>
+                        <div className="w-12 h-12 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center font-bold text-lg">
+                            RA
+                        </div>
+                        <p className="font-sans text-base">{dados.usuario}</p>
                     </div>
 
                 </div>

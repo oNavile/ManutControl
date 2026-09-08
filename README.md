@@ -28,6 +28,7 @@ A página principal apresenta:
 - Lista de ordens de serviço;
 - Agenda diária;
 - Equipamentos críticos.
+- Histórico resumido do equipamento.
 
 ### Ordens de serviço
 
@@ -35,8 +36,10 @@ A tabela apresenta:
 
 - Código da ordem;
 - Descrição;
+- Equipamento;
 - Prioridade;
-- Técnico responsável;
+- Técnico;
+- Vencimento;
 - Status.
 
 As prioridades e os status possuem estilos visuais diferentes para facilitar a identificação.
@@ -46,10 +49,9 @@ As prioridades e os status possuem estilos visuais diferentes para facilitar a i
 A agenda apresenta:
 
 - Horário;
-- Código da ordem;
 - Descrição;
-- Equipamento;
-- Técnico responsável.
+- Codigo e Nome do equipamento;
+- Técnico.
 
 Os itens são organizados pelo horário.
 
@@ -57,11 +59,19 @@ Os itens são organizados pelo horário.
 
 A seção apresenta:
 
-- Imagem do equipamento;
-- Nome;
 - Código;
+- Nome;
 - Setor;
 - Status.
+
+### Histórico dos equipamentos
+
+- Nome;
+- Codigo;
+- Descrição;
+- Tipo;
+- Técnico
+- Data
 
 ---
 
@@ -71,16 +81,9 @@ O projeto foi dividido em componentes reutilizáveis para separar responsabilida
 
 Principais componentes:
 
-- `Header.jsx` — cabeçalho da aplicação;
-- `Sidebar.jsx` — menu lateral;
-- `IndicatorCard.jsx` — indicadores do painel;
-- `SearchFilters.jsx` — busca e filtros;
-- `WorkOrderList.jsx` — tabela de ordens;
-- `WorkOrderRow.jsx` — linha individual da tabela;
-- `DailySchedule.jsx` — agenda diária;
-- `CriticalEquipment.jsx` — equipamentos críticos;
-- `PriorityBadge.jsx` — indicador visual de prioridade;
-- `StatusBadge.jsx` — indicador visual de status.
+- `header.jsx` — cabeçalho da aplicação;
+- `aside.jsx` — menu lateral;
+- `welcome.jsx` — conteudo principal.
 
 ---
 
@@ -88,13 +91,7 @@ Principais componentes:
 
 Os dados utilizados na aplicação estão armazenados localmente no arquivo:
 
-`src/Data/manut_control.json`
-
-O arquivo contém três conjuntos principais:
-
-- `ordens`
-- `agenda`
-- `equipamentos`
+`src/manutcontrol_dados.jon`
 
 ---
 
@@ -146,3 +143,6 @@ Primeiro, instale as dependências:
 
 ```bash
 npm install
+
+```rodar
+npm run dev

@@ -38,12 +38,12 @@ const quantidadeAbertas = dados.ordensServico.filter(
 ).length;
 
 const getHistoricoEquipamento = (equipamentoId) => {
-  return dados.ordensServico
-    .filter((ordem) => ordem.equipamentoId === equipamentoId)
-    .sort(
-      (a, b) =>
-        new Date(b.vencimento) - new Date(a.vencimento)
-    );
+    return dados.ordensServico
+        .filter((ordem) => ordem.equipamentoId === equipamentoId)
+        .sort(
+            (a, b) =>
+                new Date(b.vencimento) - new Date(a.vencimento)
+        );
 };
 
 
@@ -82,7 +82,6 @@ export default function Welcome() {
                 </nav>
 
                 <div className="space-y-6">
-                    {/* 1. Cards de Métricas (Topo) */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div className="bg-white p-4 rounded-xl border border-gray-200 flex items-center gap-3">
                             <div className="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-xl">
@@ -112,15 +111,12 @@ export default function Welcome() {
                         </div>
                     </div>
 
-                    {/* 2. Conteúdo Principal (Grid 2 Colunas) */}
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-                        {/* Coluna Esquerda: Tabela de Ordens (Ocupa 2 colunas no desktop) */}
                         <div className="lg:col-span-2 bg-white rounded-xl border border-gray-200 p-6 flex flex-col justify-between">
                             <div>
                                 <h2 className="text-lg font-bold text-gray-800 mb-4">Ordens que exigem atenção</h2>
 
-                                {/* Barra de Filtros */}
                                 <div className="flex flex-wrap items-center gap-3 mb-6">
                                     <div className="relative flex-1 min-w-[200px]">
                                         <i className="bi bi-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
@@ -138,7 +134,6 @@ export default function Welcome() {
                                     </select>
                                 </div>
 
-                                {/* Tabela */}
                                 <div className="overflow-x-auto">
                                     <table className="w-full text-left text-xs text-gray-600">
                                         <thead className="border-b border-gray-100 text-gray-400 uppercase font-medium">
@@ -153,9 +148,8 @@ export default function Welcome() {
                                                 <th className="py-3 px-2">Status</th>
                                             </tr>
                                         </thead>
-                                        {/* Linha 1 */}
                                         {ordensAbertas.map((ordem) => (
-                                            <tbody className="divide-y divide-gray-100">
+                                            <tbody key={ordem.id || ordem.os} className="divide-y divide-gray-100">
                                                 <tr className="hover:bg-gray-50/50">
                                                     <td className="py-3.5 px-2"><input type="checkbox" className="rounded" /></td>
                                                     <td className="py-3.5 px-2 text-blue-600 font-medium cursor-pointer">{ordem.codigo}</td>
@@ -178,18 +172,15 @@ export default function Welcome() {
                                                     </td>
                                                 </tr>
 
-                                                {/* Linha 2 */}
-
                                             </tbody>
                                         ))}
 
-                                        
+
 
                                     </table>
                                 </div>
                             </div>
 
-                            {/* Rodapé da Tabela */}
                             <div className="flex items-center justify-between pt-4 mt-4 border-t border-gray-100 text-xs">
                                 <a href="#" className="text-blue-600 font-medium hover:underline">Ver todas as ordens</a>
                                 <div className="flex items-center gap-3 text-gray-500">
@@ -202,7 +193,6 @@ export default function Welcome() {
                             </div>
                         </div>
 
-                        {/* Coluna Direita: Widgets Laterais */}
                         <div className="flex flex-col gap-6">
 
                             <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col justify-between">
@@ -218,12 +208,10 @@ export default function Welcome() {
                                                 key={ordem.id}
                                                 className="flex items-start gap-3"
                                             >
-                                                {/* Horário */}
                                                 <span className="text-xs font-semibold text-blue-600 w-10 pt-0.5">
                                                     {ordem.horarioAgendado}
                                                 </span>
 
-                                                {/* Informações */}
                                                 <div className="relative pl-4 border-l-2 border-blue-500 space-y-0.5">
 
                                                     <span className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-blue-600"></span>
@@ -255,8 +243,6 @@ export default function Welcome() {
                                 </a>
                             </div>
 
-
-                            {/* Widget 2: Equipamentos Críticos */}
                             <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col justify-between">
                                 <div>
                                     <h2 className="text-lg font-bold text-gray-800 mb-4">
@@ -273,15 +259,14 @@ export default function Welcome() {
 
                                                 <div className="flex items-center gap-2">
 
-                                                    {/* Bolinha de acordo com o status */}
                                                     <span
                                                         className={`w-2 h-2 rounded-full ${equipamento.status === "parado"
-                                                                ? "bg-red-500"
-                                                                : equipamento.status === "atencao"
-                                                                    ? "bg-amber-500"
-                                                                    : equipamento.status === "em manutencao"
-                                                                        ? "bg-blue-500"
-                                                                        : "bg-green-500"
+                                                            ? "bg-red-500"
+                                                            : equipamento.status === "atencao"
+                                                                ? "bg-amber-500"
+                                                                : equipamento.status === "em manutencao"
+                                                                    ? "bg-blue-500"
+                                                                    : "bg-green-500"
                                                             }`}
                                                     ></span>
 
@@ -301,15 +286,14 @@ export default function Welcome() {
 
                                                 </div>
 
-                                                {/* Status */}
                                                 <span
                                                     className={`font-medium text-[11px] ${equipamento.status === "parado"
-                                                            ? "text-red-500"
-                                                            : equipamento.status === "atencao"
-                                                                ? "text-amber-500"
-                                                                : equipamento.status === "em manutencao"
-                                                                    ? "text-blue-500"
-                                                                    : "text-green-500"
+                                                        ? "text-red-500"
+                                                        : equipamento.status === "atencao"
+                                                            ? "text-amber-500"
+                                                            : equipamento.status === "em manutencao"
+                                                                ? "text-blue-500"
+                                                                : "text-green-500"
                                                         }`}
                                                 >
                                                     {equipamento.status === "parado"
@@ -339,159 +323,151 @@ export default function Welcome() {
 
                             <div className="bg-white rounded-xl border border-gray-200 p-6">
 
-  <div className="mb-5">
-    <h2 className="text-lg font-bold text-gray-800">
-      Histórico dos equipamentos
-    </h2>
+                                <div className="mb-5">
+                                    <h2 className="text-lg font-bold text-gray-800">
+                                        Histórico dos equipamentos
+                                    </h2>
 
-    <p className="text-xs text-gray-400 mt-1">
-      Histórico resumido de ordens de serviço por equipamento
-    </p>
-  </div>
+                                    <p className="text-xs text-gray-400 mt-1">
+                                        Histórico resumido de ordens de serviço por equipamento
+                                    </p>
+                                </div>
 
-  <div className="overflow-x-auto">
+                                <div className="overflow-x-auto">
 
-    <table className="w-full text-left">
+                                    <table className="w-full text-left">
 
-      <thead>
-        <tr className="border-b border-gray-200 text-xs text-gray-400">
-          <th className="py-3 px-3 font-medium">
-            Equipamento
-          </th>
+                                        <thead>
+                                            <tr className="border-b border-gray-200 text-xs text-gray-400">
+                                                <th className="py-3 px-3 font-medium">
+                                                    Equipamento
+                                                </th>
 
-          <th className="py-3 px-3 font-medium">
-            OS
-          </th>
+                                                <th className="py-3 px-3 font-medium">
+                                                    OS
+                                                </th>
 
-          <th className="py-3 px-3 font-medium">
-            Descrição
-          </th>
+                                                <th className="py-3 px-3 font-medium">
+                                                    Descrição
+                                                </th>
 
-          <th className="py-3 px-3 font-medium">
-            Tipo
-          </th>
+                                                <th className="py-3 px-3 font-medium">
+                                                    Tipo
+                                                </th>
 
-          <th className="py-3 px-3 font-medium">
-            Técnico
-          </th>
+                                                <th className="py-3 px-3 font-medium">
+                                                    Técnico
+                                                </th>
 
-          <th className="py-3 px-3 font-medium">
-            Data
-          </th>
+                                                <th className="py-3 px-3 font-medium">
+                                                    Data
+                                                </th>
 
-          <th className="py-3 px-3 font-medium">
-            Status
-          </th>
-        </tr>
-      </thead>
+                                                <th className="py-3 px-3 font-medium">
+                                                    Status
+                                                </th>
+                                            </tr>
+                                        </thead>
 
-      <tbody>
+                                        <tbody>
 
-        {dados.equipamentos.map((equipamento) => {
+                                            {dados.equipamentos.map((equipamento) => {
 
-          const historico = getHistoricoEquipamento(
-            equipamento.id
-          );
+                                                const historico = getHistoricoEquipamento(
+                                                    equipamento.id
+                                                );
 
-          return historico.map((ordem) => (
+                                                return historico.map((ordem) => (
 
-            <tr
-              key={ordem.id}
-              className="border-b border-gray-100 hover:bg-gray-50"
-            >
+                                                    <tr
+                                                        key={ordem.id}
+                                                        className="border-b border-gray-100 hover:bg-gray-50"
+                                                    >
 
-              {/* Equipamento */}
-              <td className="py-3 px-3">
+                                                        <td className="py-3 px-3">
 
-                <div>
-                  <p className="text-xs font-semibold text-gray-800">
-                    {equipamento.codigo}
-                  </p>
+                                                            <div>
+                                                                <p className="text-xs font-semibold text-gray-800">
+                                                                    {equipamento.codigo}
+                                                                </p>
 
-                  <p className="text-[11px] text-gray-500">
-                    {equipamento.nome}
-                  </p>
+                                                                <p className="text-[11px] text-gray-500">
+                                                                    {equipamento.nome}
+                                                                </p>
 
-                  <p className="text-[10px] text-gray-400">
-                    {equipamento.setor}
-                  </p>
-                </div>
+                                                                <p className="text-[10px] text-gray-400">
+                                                                    {equipamento.setor}
+                                                                </p>
+                                                            </div>
 
-              </td>
+                                                        </td>
 
-              {/* OS */}
-              <td className="py-3 px-3">
-                <span className="text-xs font-medium text-blue-600">
-                  {ordem.codigo}
-                </span>
-              </td>
+                                                        <td className="py-3 px-3">
+                                                            <span className="text-xs font-medium text-blue-600">
+                                                                {ordem.codigo}
+                                                            </span>
+                                                        </td>
 
-              {/* Descrição */}
-              <td className="py-3 px-3">
-                <span className="text-xs text-gray-700">
-                  {ordem.descricao}
-                </span>
-              </td>
+                                                        <td className="py-3 px-3">
+                                                            <span className="text-xs text-gray-700">
+                                                                {ordem.descricao}
+                                                            </span>
+                                                        </td>
 
-              {/* Tipo */}
-              <td className="py-3 px-3">
+                                                        <td className="py-3 px-3">
 
-                <span className="text-[11px] px-2 py-1 rounded-full bg-gray-100 text-gray-600">
-                  {ordem.tipo}
-                </span>
+                                                            <span className="text-[11px] px-2 py-1 rounded-full bg-gray-100 text-gray-600">
+                                                                {ordem.tipo}
+                                                            </span>
 
-              </td>
+                                                        </td>
 
-              {/* Técnico */}
-              <td className="py-3 px-3">
-                <span className="text-xs text-gray-600">
-                  {ordem.tecnico}
-                </span>
-              </td>
+                                                        <td className="py-3 px-3">
+                                                            <span className="text-xs text-gray-600">
+                                                                {ordem.tecnico}
+                                                            </span>
+                                                        </td>
 
-              {/* Data */}
-              <td className="py-3 px-3">
-                <span className="text-xs text-gray-500">
-                  {new Date(
-                    ordem.vencimento
-                  ).toLocaleDateString("pt-BR")}
-                </span>
-              </td>
+                                                        <td className="py-3 px-3">
+                                                            <span className="text-xs text-gray-500">
+                                                                {new Date(
+                                                                    ordem.vencimento
+                                                                ).toLocaleDateString("pt-BR")}
+                                                            </span>
+                                                        </td>
 
-              {/* Status */}
-              <td className="py-3 px-3">
+                                                        <td className="py-3 px-3">
 
-                <span
-                  className={`text-[11px] font-medium ${
-                    ordem.status === "concluida"
-                      ? "text-green-600"
-                      : ordem.status === "vencida"
-                      ? "text-red-600"
-                      : ordem.status === "em andamento"
-                      ? "text-blue-600"
-                      : ordem.status === "aberta"
-                      ? "text-amber-600"
-                      : "text-gray-500"
-                  }`}
-                >
-                  {ordem.status}
-                </span>
+                                                            <span
+                                                                className={`text-[11px] font-medium ${ordem.status === "concluida"
+                                                                        ? "text-green-600"
+                                                                        : ordem.status === "vencida"
+                                                                            ? "text-red-600"
+                                                                            : ordem.status === "em andamento"
+                                                                                ? "text-blue-600"
+                                                                                : ordem.status === "aberta"
+                                                                                    ? "text-amber-600"
+                                                                                    : "text-gray-500"
+                                                                    }`}
+                                                            >
+                                                                {ordem.status}
+                                                            </span>
 
-              </td>
+                                                        </td>
 
-            </tr>
+                                                    </tr>
 
-          ));
+                                                ));
 
-        })}
+                                            })}
 
-      </tbody>
+                                        </tbody>
 
-    </table>
+                                    </table>
 
-  </div>
+                                </div>
 
-</div>
+                            </div>
 
                         </div>
 
